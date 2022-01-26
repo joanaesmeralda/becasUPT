@@ -18,9 +18,9 @@ class Beca extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('requerimientos');
-            $table->integer('documentos');
+            $table->string('documentos');
             $table->string('receptor');
-            $table->string('monto');
+            $table->double('monto');
             $table->timestamps();
 
         });

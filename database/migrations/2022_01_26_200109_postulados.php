@@ -15,9 +15,12 @@ class Postulados extends Migration
     {
         Schema::create('postulados', function (Blueprint $table) {
             $table->id();
-            $table->string('nombrebeca');
-            $table->integer('matricula')->unique();
+            $table->unsignedBigInteger('idbeca');
+            $table->unsignedBigInteger('matricula');
             $table->timestamps();
+
+            $table->foreign('matricula')->references('matricula')->on('alumnos');
+            $table->foreign('idbeca')->references('id')->on('beca');
 
         });
     }

@@ -15,10 +15,14 @@ class Estatus extends Migration
     {
         Schema::create('estatus', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_beca');
+            $table->unsignedBigInteger('id_beca');
             $table->string('estatus');
-            $table->string('matricula')->unique();
+            $table->unsignedBigInteger('matricula');
             $table->timestamps();
+
+            $table->foreign('matricula')->references('matricula')->on('alumnos');
+            $table->foreign('id_beca')->references('id')->on('beca');
+            
 
         });
     }
