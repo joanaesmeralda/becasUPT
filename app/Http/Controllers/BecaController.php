@@ -73,7 +73,7 @@ class BecaController extends Controller
     public function eliminarBeca(Request $data)
     {
         try {
-            $beca = Beca::find($data->nombre);
+            $beca = Beca::find($data->id);
             $beca->delete();
 
             $respuesta = [
@@ -93,7 +93,7 @@ class BecaController extends Controller
     public function editarbeca(Request $data)
     {
         try {
-            $beca = Beca::find($data->nombre);
+            $beca = Beca::find($data->id);
             $beca->nombre = $data->nombre;
             $beca->descripcion = $data->descripcion;
             $beca->requerimientos = $data->requerimientos;
@@ -118,10 +118,10 @@ class BecaController extends Controller
 
     public function consultarBeca(Request $data){
         try {
-            $beca = Beca::where('receptor',$data->receptor)->get();
+            $beca = Beca::where('receptor',$data->receptor)->first();
            // $beca = Beca::find($data->receptor);
             $respuesta = [
-                'nombre' => $beca->nomobre,
+                'nombre' => $beca->nombre,
                 'descripcion' => $beca->descripcion,
                 'requerimientos' => $beca->requerimeintos,
                 'documentos' => $beca -> documentos,
